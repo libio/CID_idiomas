@@ -4,6 +4,7 @@ import AuthComponent from './components/auth/auth.component';
 import CrudComponent from './components/crud/crud.component';
 import { authGuard } from './guards/auth.guard';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 export const routes: Routes = [
 
@@ -34,6 +35,10 @@ export const routes: Routes = [
             {
                 path: 'crud', 
                 component: CrudComponent,
+            },
+            {
+                path: 'perfil', 
+                component: PerfilComponent,
             },
             // ... (Otras rutas protegidas)
         ]
