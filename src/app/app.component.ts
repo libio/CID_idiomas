@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet, Router } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { initFlowbite } from 'flowbite';
 import { DarkThemeToggleComponent } from './common/dark-theme-toggle.component';
@@ -24,11 +24,19 @@ import { components } from './common/components';
 export class AppComponent implements OnInit{
   title = 'dashboard';
   components = components;
-  constructor(readonly sidebarService: SidebarService) {}
+  // Inyectamos el Router
+  // Usamos 'public' para que sea accesible en el template
+  constructor(readonly sidebarService: SidebarService, public router: Router) {}
   
 
 
   ngOnInit(): void {
     initFlowbite();
+  }
+
+  // Método simple para verificar si estamos en la ruta de autenticación
+  isAuthRoute(): boolean {
+    // Si la ruta comienza con '/auth' (ej: /auth o /auth/login), retorna true
+    return this.router.url.startsWith('/auth'); 
   }
 }

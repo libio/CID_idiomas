@@ -61,11 +61,12 @@ export default class AuthComponent implements OnInit {
           
           const role = res.rol;
           let redirectUrl = '/dashboard'; 
-          if (role === 'Administrador') redirectUrl = '/admin/dashboard';
-          else if (role === 'Docente') redirectUrl = '/docente/dashboard';
-          else if (role === 'Estudiante') redirectUrl = '/estudiante/dashboard';
+          // 1. 🟢 Calcular la URL de inicio por rol
+          if (role === 'Administrador') redirectUrl = '/dashboard'; // Asume que la ruta base del layout es el Dashboard
+          else if (role === 'Docente') redirectUrl = '/dashboard'; // Redirige a la ruta base protegida
+          else if (role === 'Estudiante') redirectUrl = '/dashboard'; // Redirige a la ruta base protegida
 
-          this.router.navigate([redirectUrl]);
+          this.router.navigate(['/dashboard']); // <-- Asegúrate de que apunte aquí
         },
         error: () => {
           this.error = 'Credenciales incorrectas. Verifique usuario y contraseña.';
